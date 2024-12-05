@@ -1,0 +1,9 @@
+package database;
+
+public class DatabaseConnection {
+	private static String driverClass = "org.hsqldb.jdbcDriver";
+	private static String url = "jdbc:hsqldb:hsql://localhost/examples";
+	private static String username = "sa";
+	private static String password = "";
+
+}

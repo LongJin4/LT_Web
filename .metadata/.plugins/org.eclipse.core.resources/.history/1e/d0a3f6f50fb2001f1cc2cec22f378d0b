@@ -1,0 +1,66 @@
+package database;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import bean.User;
+
+public class UserImp implements UserDao {
+
+	@Override
+	public List<User> all() {
+		Connection conn = null;
+		List<User> resultList = new ArrayList<User>();
+		try {
+//ket noi database
+			conn = DatabaseConnection.getConnection();
+//tao statement
+			Statement stmt = conn.createStatement();
+//ResulSet Lấy kq trả về
+			ResultSet result = stmt.executeQuery("SELECT * FROM USERS;");
+			while (result.next()) {
+				String name = result.getString("NAME");
+				String pass = result.getString("NAME");
+			}
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return resultList;
+	}
+
+	@Override
+	public void insert(User user) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void uddate(User user) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void delete(User user) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void findById(User user) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

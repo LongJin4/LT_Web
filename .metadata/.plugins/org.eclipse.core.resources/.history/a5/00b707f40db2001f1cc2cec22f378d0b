@@ -1,0 +1,5 @@
+package database;
+
+public interface UserDao {
+	public void List<User> all();
+}
