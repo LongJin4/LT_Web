@@ -49,7 +49,6 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("user", user);
 //			chuyen des sang index
 			destination = "/View/index.html";
-			System.out.println("ok het r");
 		}
 //		dieu huong sang index
 		response.sendRedirect(request.getContextPath() + destination);

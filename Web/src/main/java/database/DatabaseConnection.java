@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-	private static String driverClass = "org.hsqldb.jdbcDriver";
-	private static String url = "jdbc:hsqldb:mem:.";
-	private static String username = "sa";
+	private static String driverClass = "com.mysql.cj.jdbc.Driver";
+	private static String url = "jdbc:mysql://localhost:3306/QLBanDongHoDatabase";
+	private static String username = "root";
 	private static String password = "";
 	static {
 		try {

@@ -5,6 +5,10 @@
     <fullyQualifiedTypeName name="database.UserImp"/>
     <fullyQualifiedTypeName name="database.DAOFactory"/>
     <fullyQualifiedTypeName name="database.UserDao"/>
-    <fullyQualifiedTypeName name="bean.User"/>
     <fullyQualifiedTypeName name="java.lang.Boolean"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="database.DatabaseConnection"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.protocol.Resultset"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="bean.User"/>
 </qualifiedTypeNameHistroy>

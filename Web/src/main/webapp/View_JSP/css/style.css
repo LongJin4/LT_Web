@@ -786,7 +786,7 @@ a.create {
   -moz-border-radius:4px;
   -ms-border-radius:4px;
 }
-a.create:hover, .account-top input[type="submit"]:hover, .register-but form input[type="submit"]:hover{
+a.create:hover, .account-top input[type="submit"]:hover, .register-but input[type="submit"]:hover{
   background: #000;
   color:#fff;
 }
@@ -911,9 +911,9 @@ a.create:hover, .account-top input[type="submit"]:hover, .register-but form inpu
 	color:#00BFF0;
 }
 .register-but{
-	margin-top:1em;
+	margin-top:2em;
 }
-.register-but form input[type="submit"] {
+.register-but input[type="submit"] {
 	background:#F9D9BE;
 	color: #000;
 	font-size:1em;
@@ -927,6 +927,7 @@ a.create:hover, .account-top input[type="submit"]:hover, .register-but form inpu
 	border:none;
 	outline:none;
 }
+
 .register-bottom-grid {
 	margin-top:3em;
 }
