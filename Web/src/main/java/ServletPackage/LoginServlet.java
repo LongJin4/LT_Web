@@ -43,21 +43,18 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 //		them user vao session
-		if (checkAccount(users, email, password)) {
-			User user = new User(email, password);
+		if (users.findById(new User(email, password)) != null) {
+			User user = users.findById(new User(email, password));
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 //			chuyen des sang index
-			destination = "/View/index.html";
+			 destination = "/View_JSP/login.jsp";
+			System.out.println("success");
 		}
 //		dieu huong sang index
 		response.sendRedirect(request.getContextPath() + destination);
 	}
 
-	private boolean checkAccount(UserDao users, String username, String password) {
-		// TODO Auto-generated method stub
-		return users.findById(new User(username, password)) != null;
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

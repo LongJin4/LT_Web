@@ -89,7 +89,7 @@ public class UserImp implements UserDao {
 		User userTemp = null;
 		try {
 			conn = DatabaseConnection.getConnection();
-			String sql = "SELECT * FROM user us JOIN userdetail usd on us.email=usd.email WHERE us.email= ? AND us.password= ?;";
+			String sql = "SELECT * FROM user us JOIN userdetail usd on us.email=usd.email WHERE us.email= ? AND us.pass= ?;";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, user.getEmail());
 			pstmt.setString(2, user.getPassword());
@@ -97,7 +97,7 @@ public class UserImp implements UserDao {
 
 			if (result.next()) {
 				String email = result.getString("email");
-				String pass = result.getString("password");
+				String pass = result.getString("pass");
 				String firstName = result.getString("firstname");
 				String lastName = result.getString("lastname");
 				userTemp = new User(firstName, lastName, email, pass);

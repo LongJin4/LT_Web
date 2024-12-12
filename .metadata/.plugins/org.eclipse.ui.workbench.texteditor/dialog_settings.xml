@@ -3,6 +3,9 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
+		<item value="a.create"/>
+		<item value="user_desc"/>
+		<item value="login"/>
 		<item value="register-but"/>
 	</list>
 </section>

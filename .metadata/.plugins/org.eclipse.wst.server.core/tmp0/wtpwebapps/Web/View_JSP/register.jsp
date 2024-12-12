@@ -39,7 +39,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 </head>
 <body>
-	<jsp:include page="header.html"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	<div class="account-in">
 		<div class="container">
 			<form action="${pageContext.request.contextPath}/RegisterServlet"
