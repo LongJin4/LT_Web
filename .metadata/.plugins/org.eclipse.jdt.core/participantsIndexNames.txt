@@ -1,7 +1,3 @@
 INDEX VERSION 1.134
-D:\Java_Project\Web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1517258402.index
-\Web\src\main\java
-D:\Java_Project\Web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3558212379.index
-\Web\src\main\java
-D:\Java_Project\Web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3588658062.index
+D:\github\LtWeb_project\LTWeb_Long\LT_Web\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3588658062.index
 \Web\src\main\java
