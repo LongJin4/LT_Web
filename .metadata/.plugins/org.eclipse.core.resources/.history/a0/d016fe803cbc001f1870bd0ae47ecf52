@@ -1,5 +1,0 @@
-package database;
-
-public interface IProductDao {
- public List<Product> all()
-}
