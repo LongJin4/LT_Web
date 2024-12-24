@@ -1,0 +1,9 @@
+package database;
+
+import java.util.List;
+
+import bean.Product;
+
+public interface IProductDao {
+	public List<Product> all();
+}

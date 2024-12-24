@@ -1,8 +1,0 @@
-package ServletPackage;
-
-public class Snippet {
-	public static void main(String[] args) {
-		preStatement.setString(0, user.getEmail());
-	}
-}
-

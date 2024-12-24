@@ -1,0 +1,19 @@
+package bean;
+
+import java.util.List;
+
+public class Product {
+	String id;
+	String name;
+	List<String> listImg;
+	String detail;
+	double cost;
+	public Product(String id, String name, List<String> listImg, String detail, double cost) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.listImg = listImg;
+		this.detail = detail;
+		this.cost = cost;
+	}
+}

@@ -6,9 +6,19 @@
     <fullyQualifiedTypeName name="database.DAOFactory"/>
     <fullyQualifiedTypeName name="database.UserDao"/>
     <fullyQualifiedTypeName name="java.lang.Boolean"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.protocol.Resultset"/>
+    <fullyQualifiedTypeName name="bean.User"/>
+    <fullyQualifiedTypeName name="database.IProduct"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="database.DatabaseConnection"/>
-    <fullyQualifiedTypeName name="com.mysql.cj.protocol.Resultset"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-    <fullyQualifiedTypeName name="bean.User"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="database.ProductDao"/>
+    <fullyQualifiedTypeName name="java.awt.image.ImageProducer"/>
+    <fullyQualifiedTypeName name="database.IProductDao"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="bean.Product"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.ServletContext"/>
 </qualifiedTypeNameHistroy>

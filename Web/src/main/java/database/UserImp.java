@@ -72,15 +72,11 @@ public class UserImp implements UserDao {
 	@Override
 	public int update(User user) {
 		return 0;
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public int delete(User user) {
 		return 0;
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override

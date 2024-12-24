@@ -6,7 +6,12 @@ public class DAOFactory {
 	public static DAOFactory getInstance() {
 		return instance;
 	}
+
 	public UserDao getUserDao() {
 		return new UserImp();
+	}
+
+	public IProductDao getProductdao() {
+		return new ProductDao();
 	}
 }

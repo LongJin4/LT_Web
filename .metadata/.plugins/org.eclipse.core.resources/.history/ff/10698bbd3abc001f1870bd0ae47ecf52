@@ -1,0 +1,10 @@
+package bean;
+
+import java.util.List;
+
+public class Product {
+int id;
+String name;
+List<String> listImg;
+String detail;
+}
