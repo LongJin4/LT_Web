@@ -41,10 +41,7 @@ public class ProductServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String destination = "/View_JSP/men.jsp";
-		IProductDao productdao = DAOFactory.getInstance().getProductdao();
-		List<Product> products = productdao.all();
-		ServletContext application = getServletContext();
-		application.setAttribute("products", products);
+		
 		response.sendRedirect(request.getContextPath() + destination);
 	}
 

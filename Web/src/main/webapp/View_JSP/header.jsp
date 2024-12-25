@@ -123,16 +123,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="h_nav">
 											<h4>Men</h4>
 											<ul>
-												<li><a href="men.html">Watches</a></li>
-												<li><a href="men.html">watches</a></li>
-												<li><a href="men.html">Blazers</a></li>
+												<li><a href="men.jsp">Watches</a></li>
+												<li><a href="men.jsp">watches</a></li>
+												<li><a href="men.jsp">Blazers</a></li>
 												<li><a href="men.html">Suits</a></li>
-												<li><a href="men.html">Trousers</a></li>
-												<li><a href="men.html">Jeans</a></li>
-												<li><a href="men.html">Shirts</a></li>
-												<li><a href="men.html">Sweatshirts & Hoodies</a></li>
-												<li><a href="men.html">Swim Wear</a></li>
-												<li><a href="men.html">Accessories</a></li>
+												<li><a href="men.jsp">Trousers</a></li>
+												<li><a href="men.jsp">Jeans</a></li>
+												<li><a href="men.jsp">Shirts</a></li>
+												<li><a href="men.jsp">Sweatshirts & Hoodies</a></li>
+												<li><a href="men.jsp">Swim Wear</a></li>
+												<li><a href="men.jsp">Accessories</a></li>
 											</ul>
 										</div>
 									</div>
@@ -208,16 +208,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="h_nav">
 											<h4>Men</h4>
 											<ul>
-												<li><a href="men.html">Watches</a></li>
-												<li><a href="men.html">watches</a></li>
-												<li><a href="men.html">Blazers</a></li>
-												<li><a href="men.html">Suits</a></li>
-												<li><a href="men.html">Trousers</a></li>
-												<li><a href="men.html">Jeans</a></li>
-												<li><a href="men.html">Shirts</a></li>
-												<li><a href="men.html">Sweatshirts & Hoodies</a></li>
-												<li><a href="men.html">Swim Wear</a></li>
-												<li><a href="men.html">Accessories</a></li>
+												<li><a href="men.jsp">Watches</a></li>
+												<li><a href="men.jsp">watches</a></li>
+												<li><a href="men.jsp">Blazers</a></li>
+												<li><a href="men.jsp">Suits</a></li>
+												<li><a href="men.jsp">Trousers</a></li>
+												<li><a href="men.jsp">Jeans</a></li>
+												<li><a href="men.jsp">Shirts</a></li>
+												<li><a href="men.jsp">Sweatshirts & Hoodies</a></li>
+												<li><a href="men.jsp">Swim Wear</a></li>
+												<li><a href="men.jsp">Accessories</a></li>
 											</ul>
 										</div>
 									</div>
