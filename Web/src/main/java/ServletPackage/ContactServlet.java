@@ -26,7 +26,7 @@ public class ContactServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String destination = "/View_JSP/contact.jsp";
+		String destination = "/contact.jsp";
 		response.sendRedirect(request.getContextPath() + destination);
 	}
 

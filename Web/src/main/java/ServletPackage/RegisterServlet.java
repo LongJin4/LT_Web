@@ -33,7 +33,7 @@ public class RegisterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String destination = "/View_JSP/register.jsp";
+		String destination = "/register.jsp";
 		UserDao users = DAOFactory.getInstance().getUserDao();
 //		Lay thong tin tu request
 		String firstname = request.getParameter("firstname");

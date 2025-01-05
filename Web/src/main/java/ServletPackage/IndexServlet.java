@@ -32,12 +32,11 @@ public class IndexServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String destination = "/View_JSP/index.jsp";
+		String destination = "/index.jsp";
 //		them database vao application
 		IProductDao productdao = DAOFactory.getInstance().getProductdao();
-		List<Product> products = productdao.all();
 		ServletContext application = getServletContext();
-		application.setAttribute("products", products);
+		application.setAttribute("products", productdao);
 //		dieu huong sang trang index
 		response.sendRedirect(request.getContextPath() + destination);
 	}

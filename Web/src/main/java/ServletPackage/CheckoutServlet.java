@@ -26,7 +26,7 @@ public class CheckoutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String destination = "/View_JSP/checkout.jsp";
+		String destination = "/checkout.jsp";
 		response.sendRedirect(request.getContextPath() + destination);
 	}
 

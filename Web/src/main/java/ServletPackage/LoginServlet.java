@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String destination = "/View_JSP/login.jsp";
+		String destination = "/login.jsp";
 //		tạo userdao
 		UserDao users = DAOFactory.getInstance().getUserDao();
 //		Lay thong tin tu request

@@ -1,23 +1,27 @@
 package bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Product {
 	String id;
 	String name;
-	String img;
+	ArrayList<String> listimg;
 	String detail;
 	double cost;
+	String category;
 
-	public Product(String id, String name, String img, String detail, double cost) {
+	public Product(String id, String name, String detail, double cost) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.img = img;
 		this.detail = detail;
 		this.cost = cost;
+		listimg = new ArrayList();
 	}
-
+	public String getFirstImage() {
+		return listimg.get(0);
+	}
 	public String getId() {
 		return id;
 	}
@@ -34,12 +38,12 @@ public class Product {
 		this.name = name;
 	}
 
-	public String getImg() {
-		return img;
+	public ArrayList<String> getListimg() {
+		return listimg;
 	}
 
-	public void setImg(String img) {
-		this.img = img;
+	public void setListimg(ArrayList<String> listimg) {
+		this.listimg = listimg;
 	}
 
 	public String getDetail() {

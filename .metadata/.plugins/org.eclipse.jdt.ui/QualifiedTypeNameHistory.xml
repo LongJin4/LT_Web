@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="jakarta.websocket.Session"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="database.UserImp"/>
     <fullyQualifiedTypeName name="database.DAOFactory"/>
     <fullyQualifiedTypeName name="database.UserDao"/>
@@ -9,16 +8,17 @@
     <fullyQualifiedTypeName name="com.mysql.cj.protocol.Resultset"/>
     <fullyQualifiedTypeName name="bean.User"/>
     <fullyQualifiedTypeName name="database.IProduct"/>
+    <fullyQualifiedTypeName name="database.ProductDao"/>
+    <fullyQualifiedTypeName name="java.awt.image.ImageProducer"/>
+    <fullyQualifiedTypeName name="database.IProductDao"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.ServletContext"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="bean.Product"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.sql.Statement"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="database.DatabaseConnection"/>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="database.ProductDao"/>
-    <fullyQualifiedTypeName name="java.awt.image.ImageProducer"/>
-    <fullyQualifiedTypeName name="database.IProductDao"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="bean.Product"/>
-    <fullyQualifiedTypeName name="jakarta.servlet.ServletContext"/>
 </qualifiedTypeNameHistroy>

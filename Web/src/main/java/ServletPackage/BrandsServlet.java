@@ -26,7 +26,7 @@ public class BrandsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String destination = "/View_JSP/brands.jsp";
+		String destination = "/brands.jsp";
 		response.sendRedirect(request.getContextPath() + destination);
 	}
 
