@@ -1,0 +1,10 @@
+package bean;
+
+public class Category {
+	String category;
+	int num;
+	@Override
+	public String toString() {
+		return "Category [category=" + category + ", num=" + num + "]";
+	}
+}

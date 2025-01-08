@@ -51,18 +51,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a href="checkout.jsp">
 							<h4>
 								<p>
-									Cart: <span class="simpleCart_total"></span> (<span
-										id="simpleCart_quantity" class="simpleCart_quantity"></span>
-									items)
+									Cart: ${cart.getsize()}
 								</p>
 								<img src="images/bag.png" alt="" />
 								<div class="clearfix"></div>
 							</h4>
 						</a>
 					</div>
-					<p class="empty">
-						<a href="javascript:;" class="simpleCart_empty">Empty Cart</a>
-					</p>
 					<div class="clearfix"></div>
 				</div>
 				<div class="header_top_right">
@@ -113,7 +108,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header_bottom">
 				<div class="logo">
 					<h1>
-						<a href="index.html"><span class="m_1">W</span>atches</a>
+						<a href="index.jsp"><span class="m_1">W</span>atches</a>
 					</h1>
 				</div>
 				<div class="menu">

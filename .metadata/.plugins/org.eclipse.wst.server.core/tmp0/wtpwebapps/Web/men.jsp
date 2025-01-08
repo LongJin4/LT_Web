@@ -52,8 +52,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h3>Categories</h3>
 				<ul class="product-categories color">
 					<c:forEach var="category" items="${products.getCategories()}">
-						<li class="cat-item cat-item-42"><a href="#">${category}</a>
-							<span class="count">(14)</span></li>
+						<li class="cat-item cat-item-42"><a href="#">${category.category}</a>
+							<span class="count">${category.num}</span></li>
 					</c:forEach>
 
 				</ul>
@@ -125,7 +125,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													<h4>${product.name}</h4>
 													<p>Dresses</p>
 													<div class="price mount item_price">${product.cost}</div>
-													<a class="button item_add cbp-vm-icon cbp-vm-add" href="#">Add
+													<a class="button item_add cbp-vm-icon cbp-vm-add" href="${pageContext.request.contextPath}/AddToCart?productid=${product.id}">Add
 														to cart</a>
 												</div>
 											</div>

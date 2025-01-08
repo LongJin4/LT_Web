@@ -4,13 +4,21 @@ public class User {
 	String email;
 	String password;
 	String firstname, lastname;
-
+	ShoppingCart shoppingCart;
 	public User(String firstname, String lastname, String email, String password) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.firstname = firstname;
 		this.lastname = lastname;
+	}
+
+	public ShoppingCart getShoppingCart() {
+		return shoppingCart;
+	}
+
+	public void setShoppingCart(ShoppingCart shoppingCart) {
+		this.shoppingCart = shoppingCart;
 	}
 
 	public User(String email, String password) {

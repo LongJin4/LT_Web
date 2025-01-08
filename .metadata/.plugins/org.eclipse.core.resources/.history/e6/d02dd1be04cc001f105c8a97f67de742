@@ -1,0 +1,13 @@
+package bean;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ShoppingCart {
+	List<Product> shoppingCart;
+
+	public ShoppingCart() {
+		super();
+		this.shoppingCart = new ArrayList<Product>();
+	}
+}

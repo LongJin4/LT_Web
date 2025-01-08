@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Product {
-	String id;
+	public int id;
 	String name;
-	ArrayList<String> listimg;
+	List<String> listimg;
 	String detail;
 	double cost;
 	String category;
+	int quantity;
 
-	public Product(String id, String name, String detail, double cost) {
+	public Product(int id, String name, String detail, double cost) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -19,14 +20,41 @@ public class Product {
 		this.cost = cost;
 		listimg = new ArrayList();
 	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public Product(String name, List<String> image, String detail, double cost, String category, int quantity) {
+		this.name=name;
+		this.listimg= image;
+		this.detail=detail;
+		this.cost=cost;
+		this.category=category;
+		this.quantity=quantity;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 	public String getFirstImage() {
 		return listimg.get(0);
 	}
-	public String getId() {
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -38,7 +66,7 @@ public class Product {
 		this.name = name;
 	}
 
-	public ArrayList<String> getListimg() {
+	public List<String> getListimg() {
 		return listimg;
 	}
 

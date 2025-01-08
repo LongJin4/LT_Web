@@ -1,0 +1,12 @@
+package bean;
+
+public class Category {
+	String category;
+	int num;
+	
+	public Category(String category, int num) {
+		super();
+		this.category = category;
+		this.num = num;
+	}
+}
