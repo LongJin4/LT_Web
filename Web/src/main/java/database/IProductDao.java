@@ -15,4 +15,8 @@ public interface IProductDao {
 	public int delete(Product product);
 
 	public Product findById(String id);
+	
+	public int count(String txtSearch);
+
+	public List<Product> searchResult(String txtSearch, int index, int size);
 }
