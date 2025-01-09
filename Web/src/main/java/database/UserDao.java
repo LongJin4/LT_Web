@@ -14,4 +14,5 @@ public interface UserDao {
 	public int delete(User user);
 
 	public User findById(User user);
+	public boolean checkAdmin(String admin,String password);
 }

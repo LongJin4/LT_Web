@@ -43,6 +43,8 @@
 		<nav>
 			<a href="adminListProduct.jsp">Danh sách sản phẩm</a> 
 			<a href="adminAdd.jsp">Thêm sản phẩm</a>
+			<a href="adminDonHang.jsp">Quản lý đơn hàng</a>
+			<a href="index.jsp">Logout</a>
 		</nav>
 	</header>
 </body>

@@ -5,12 +5,14 @@ public class User {
 	String password;
 	String firstname, lastname;
 	ShoppingCart shoppingCart;
-	public User(String firstname, String lastname, String email, String password) {
+	String role;
+	public User(String firstname, String lastname, String email, String password, String role) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.firstname = firstname;
 		this.lastname = lastname;
+		this.role=role;
 	}
 
 	public ShoppingCart getShoppingCart() {
@@ -21,10 +23,19 @@ public class User {
 		this.shoppingCart = shoppingCart;
 	}
 
-	public User(String email, String password) {
+	public User(String email, String password, String role) {
 		super();
 		this.email = email;
 		this.password = password;
+		this.role=role;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public String getFirstname() {

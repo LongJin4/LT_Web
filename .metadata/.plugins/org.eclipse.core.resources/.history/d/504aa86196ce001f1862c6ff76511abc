@@ -1,0 +1,53 @@
+package database;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import bean.DonHang;
+
+public class DonHangImp implements DonHangDao{
+
+	@Override
+	public List<DonHang> all() {
+		String sql="select * from donhang d join donhang_product dp on d.id=dp.donhang_id ";
+		Connection connection;
+		List <DonHang>res= new ArrayList<DonHang>();
+		try {
+			connection= DatabaseConnection.getConnection();
+			PreparedStatement prs= connection.prepareStatement(sql);
+			ResultSet rs= prs.executeQuery();
+			while(rs.next()) {
+				List<Product>
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	@Override
+	public int insert(DonHang donhang) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(DonHang donhang) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delete(DonHang donhang) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

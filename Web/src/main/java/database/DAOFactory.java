@@ -14,4 +14,7 @@ public class DAOFactory {
 	public IProductDao getProductdao() {
 		return new ProductDao();
 	}
+	public DonHangDao getDonHangDao() {
+		return new DonHangImp();
+	}
 }

@@ -28,7 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 <!-- Reuse header and menu here -->
-<%@ include file="header.jsp" %>
+<%@ include file="header2.jsp" %>
    <div class="men">
    	<div class="container">
       <div class="col-md-9 single_top">

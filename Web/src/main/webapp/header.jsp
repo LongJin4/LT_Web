@@ -14,7 +14,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	
 	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
 
 
 
@@ -53,18 +57,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a href="checkout.jsp">
 							<h4>
 								<p>
-									Cart: <span class="simpleCart_total"></span> (<span
-										id="simpleCart_quantity" class="simpleCart_quantity"></span>
-									items)
+									Cart:$ ${cart.getPrice()} (${cart.getsize()} items)
 								</p>
 								<img src="images/bag.png" alt="" />
 								<div class="clearfix"></div>
 							</h4>
 						</a>
 					</div>
-					<p class="empty">
-						<a href="javascript:;" class="simpleCart_empty">Empty Cart</a>
-					</p>
 					<div class="clearfix"></div>
 				</div>
 				<div class="header_top_right">
@@ -87,6 +86,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</c:otherwise>
 								</c:choose></li>
 						</a>
+						<c:choose>
+							<c:when test="${not empty sessionScope.user}">
+								<a class="user_desc" href="LogoutServlet"
+									style="text-decoration: underline; font-size: smaller;">Logout</a>
+							</c:when>
+							<c:otherwise>
+
+							</c:otherwise>
+						</c:choose>
 						<div class="clearfix"></div>
 					</ul>
 					<!-- Start Search -->
@@ -126,7 +134,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="menu">
 					<ul class="megamenu skyblue">
-						<li><a class="color2" href="men.jsp">Watches</a></li>
+						<li><a class="color2" href="index.jsp">Home</a></li>
 						<li><a class="color10" href="brands.jsp">Brands</a></li>
 						<li><a class="color3" href="men.jsp">Sale</a></li>
 						<li><a class="color7" href="404.jsp">News</a></li>

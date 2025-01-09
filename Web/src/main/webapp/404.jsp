@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="index.jsp" %>
+<%@ include file="header2.jsp" %>
 <div class="container">
    	  <div class="page-not-found">
 	    <h1>404</h1>

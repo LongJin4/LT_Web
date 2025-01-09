@@ -1,0 +1,61 @@
+package database;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import bean.DonHang;
+import bean.Product;
+
+public class DonHangImp implements DonHangDao{
+
+	@Override
+	public List<DonHang> all() {
+		String sql="select * from donhang ";
+		String productsql="select * from product p join donhang_product dp on p.id=dp.product_id where donhang_id=?";
+		Connection connection;
+		List <DonHang>res= new ArrayList<DonHang>();
+		try {
+			connection= DatabaseConnection.getConnection();
+			PreparedStatement prs= connection.prepareStatement(sql);
+			ResultSet rs= prs.executeQuery();
+			while(rs.next()) {
+				List<Product> list= new ArrayList<Product>();
+				PreparedStatement pr= connection.prepareStatement(productsql);
+				pr.setInt(1, rs.getInt("id"));
+				ResultSet rsp= pr.executeQuery();
+				while(rsp.next()) {
+					
+				}
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	@Override
+	public int insert(DonHang donhang) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(DonHang donhang) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delete(DonHang donhang) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

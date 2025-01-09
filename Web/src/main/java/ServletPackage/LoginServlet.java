@@ -36,19 +36,20 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String destination = "/login.jsp";
+		String destination = "/register.jsp";
 //		tạo userdao
 		UserDao users = DAOFactory.getInstance().getUserDao();
 //		Lay thong tin tu request
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+		String role= request.getParameter("role");
 //		them user vao session
-		if (users.findById(new User(email, password)) != null) {
-			User user = users.findById(new User(email, password));
+		if (users.findById(new User(email, password,role)) != null) {
+			User user = users.findById(new User(email, password,role));
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 //			chuyen des sang index
-			 destination = "/View_JSP/login.jsp";
+			 destination = "/login.jsp";
 			System.out.println("success");
 		}
 //		dieu huong sang index

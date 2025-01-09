@@ -27,7 +27,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/simpleCart.min.js"> </script>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="header2.jsp"></jsp:include>
  	
    <div class="account-in">
    	 <div class="container">
@@ -46,6 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>				
 				<input type="submit""> 
 				 <a href="register.jsp" class="create">Tạo tài khoản</a>
+				 <a href="AdminLogin.jsp" class="create"> Đăng nhập Admin</a>
 		   </form>
 		  
 		   <!-- end -->

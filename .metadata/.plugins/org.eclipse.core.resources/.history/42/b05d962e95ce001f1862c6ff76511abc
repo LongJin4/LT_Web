@@ -1,0 +1,7 @@
+package database;
+
+import bean.DonHang;
+
+public interface DonHangDao {
+public int insert(DonHang donhang);
+}

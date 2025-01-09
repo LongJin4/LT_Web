@@ -41,7 +41,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 	<!-- Reuse header, menu, footer here -->
-	<%@ include file="header.jsp"%>
+	<%@ include file="header2.jsp"%>
 	<!-- content -->
 	<div class="account-in">
 		<div class="container">
@@ -102,7 +102,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="clearfix"></div>
 					</ul>
 					<div class="clearfix"></div>
-					<a class="order" href="#">Place Order</a>
+					<a class="order" href="OrderServlet">Place Order</a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
