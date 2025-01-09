@@ -227,5 +227,57 @@ public class ProductDao implements IProductDao {
 		}
 		return res;
 	}
+	public int count(String txtSearch) {
+		String query = "SELECT count(*) FROM product WHERE name LIKE ?";
+		Connection connect;
+		int count = 0;
+		try {
+			connect = DatabaseConnection.getConnection();
+			PreparedStatement preparedStatement = connect.prepareStatement(query);
+			preparedStatement.setString(1, "%" + txtSearch + "%");
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				count = resultSet.getInt(1); // Retrieve the count value
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+
+	public List<Product> searchResult(String txtSearch, int index, int size) {
+		Connection connect;
+		List<Product> res = new ArrayList<>();
+		String sql = "with x as (SELECT ROW_NUMBER () over (oder by id) as r\n" + ", * FROM product p "
+				+ "JOIN product_detail pd ON p.id = pd.product_id " + "WHERE p.name LIKE ? \n"
+				+ "SELECT * from x where r between ?*size-(size-1) and ?*size";
+		String sqlImage = "SELECT * FROM product_image WHERE product_id = ?";
+		try {
+			connect = DatabaseConnection.getConnection();
+			PreparedStatement ps = connect.prepareStatement(sql);
+			ps.setString(1, "%" + txtSearch + "%");
+			ps.setInt(2, index);
+			ps.setInt(3, index);
+
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Product product = new Product(rs.getInt("id"), rs.getString("name"), rs.getString("detail"),
+						rs.getDouble("cost"));
+
+				// images
+				PreparedStatement preImage = connect.prepareStatement(sqlImage);
+				preImage.setString(1, rs.getString("id"));
+				ResultSet rsImage = preImage.executeQuery();
+				while (rsImage.next()) {
+					product.getListimg().add(rsImage.getString("image"));
+				}
+
+				res.add(product);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
 
 }

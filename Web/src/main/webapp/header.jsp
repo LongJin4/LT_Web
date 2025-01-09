@@ -13,7 +13,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript">
 	
 	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 
 
 </script>
@@ -51,13 +53,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a href="checkout.jsp">
 							<h4>
 								<p>
-									Cart: ${cart.getsize()}
+									Cart: <span class="simpleCart_total"></span> (<span
+										id="simpleCart_quantity" class="simpleCart_quantity"></span>
+									items)
 								</p>
 								<img src="images/bag.png" alt="" />
 								<div class="clearfix"></div>
 							</h4>
 						</a>
 					</div>
+					<p class="empty">
+						<a href="javascript:;" class="simpleCart_empty">Empty Cart</a>
+					</p>
 					<div class="clearfix"></div>
 				</div>
 				<div class="header_top_right">
@@ -82,18 +89,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</a>
 						<div class="clearfix"></div>
 					</ul>
-					<!-- start search-->
+					<!-- Start Search -->
 					<div class="search-box">
 						<div id="sb-search" class="sb-search">
-							<form>
+							<form action="SearchServlet?index=1" method="post">
+								<!-- Input field for the search term -->
 								<input class="sb-search-input"
 									placeholder="Enter your search term..." type="search"
-									name="search" id="search"> <input
-									class="sb-search-submit" type="submit" value=""> <span
-									class="sb-icon-search"> </span>
+									name="query" id="search" required>
+
+								<!-- Hidden submit button to allow form submission -->
+								<input class="sb-search-submit" type="submit" value="">
+
+								<!-- Search Icon -->
+								<span class="sb-icon-search"> </span>
 							</form>
 						</div>
 					</div>
+					<!-- End Search -->
 					<!----search-scripts---->
 					<script src="js/classie1.js"></script>
 					<script src="js/uisearch.js"></script>
