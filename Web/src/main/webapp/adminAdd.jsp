@@ -84,7 +84,7 @@
         <label for="listimg">Hình ảnh sản phẩm:</label>
         <input type="file" id="listimg" name="listimg" multiple accept="image/*">
 
-        <button type="submit">Thêm sản phẩm</button>
+       <input type="submit" value="submit">
     </form>
 </body>
 </html>

@@ -124,8 +124,27 @@ public class ProductDao implements IProductDao {
 
 	@Override
 	public int update(Product product) {
-		String sql="UPDATE product SET name WHERE condition;";
-		return 0;
+		String sql = "UPDATE product SET name= ?, quantity=?, cost=?, detail=?, category=? WHERE id = ?;";
+		Connection connection;
+		int res=0;
+		try {
+			connection = DatabaseConnection.getConnection();
+			PreparedStatement prs= connection.prepareStatement(sql);
+			prs.setString(1, product.getName());
+			prs.setInt(2, product.getQuantity());
+			prs.setDouble(3, product.getCost());
+			prs.setString(4, product.getDetail());
+			prs.setString(5, product.getCategory());
+			prs.setInt(6, product.id);
+			res=prs.executeUpdate();
+			degreecategory(product);
+			deleteImage(product);
+			insertImage(product);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return res;
 	}
 
 	@Override
@@ -227,6 +246,7 @@ public class ProductDao implements IProductDao {
 		}
 		return res;
 	}
+
 	public int count(String txtSearch) {
 		String query = "SELECT count(*) FROM product WHERE name LIKE ?";
 		Connection connect;

@@ -110,7 +110,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul>
 						<c:forEach var="product" items="${products.all()}">
 							<li class="simpleCart_shelfItem"><a class="cbp-vm-image"
-								href="${pageContext.request.contextPath}/AdminEdit?productid=${product.id}">
+								href="${pageContext.request.contextPath}/AdminEdit?productid=${product.id}&action=detail">
 									<div class="view view-first">
 										<div class="inner_content clearfix">
 											<div class="product_image">

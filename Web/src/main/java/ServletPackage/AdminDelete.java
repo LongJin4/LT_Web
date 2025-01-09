@@ -1,11 +1,15 @@
 package ServletPackage;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import bean.Product;
+import database.ProductDao;
 
 /**
  * Servlet implementation class AdminDelete
@@ -27,7 +31,12 @@ public class AdminDelete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String id= request.getParameter("productid");
+		ServletContext application = getServletContext();
+		ProductDao productdao = (ProductDao) application.getAttribute("products");
+		Product product= productdao.findById(id);
+		productdao.delete(product);
+		response.sendRedirect("adminListProduct.jsp");
 	}
 
 	/**

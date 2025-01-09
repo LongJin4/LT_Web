@@ -40,12 +40,24 @@ public class AdminEdit extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String id=request.getParameter("productid");
+		String action = request.getParameter("action");
+		String destination = "adminListProduct.jsp";
+		String id = request.getParameter("productid");
 		ServletContext application = getServletContext();
 		ProductDao productdao = (ProductDao) application.getAttribute("products");
-		Product product= productdao.findById(id);
+		Product product = productdao.findById(id);
 		request.setAttribute("product", product);
-		request.getRequestDispatcher("AdminProductDetail.jsp").forward(request, response);
+		switch (action) {
+		case "detail":
+			destination = "AdminProductDetail.jsp";
+			break;
+		case "edit":
+			destination = "AdminEdit.jsp";
+			break;
+		default:
+			break;
+		}
+		request.getRequestDispatcher(destination).forward(request, response);
 	}
 
 	/**
@@ -54,82 +66,7 @@ public class AdminEdit extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		  request.setCharacterEncoding("UTF-8");
-
-	        // Lấy thông tin từ form
-		  String id= request.getParameter("productId");
-	        String name = request.getParameter("name");
-	        String category = request.getParameter("category");
-	        String costStr = request.getParameter("cost");
-	        String quantityStr = request.getParameter("quantity");
-	        String detail = request.getParameter("detail");
-	        
-	        // Lấy tất cả các phần file
-	        Collection<Part> imageParts = request.getParts(); // Lấy tất cả các phần tử từ form
-	        
-	        // Kiểm tra lỗi nhập liệu
-	        if (name == null || name.trim().isEmpty() ||
-	            category == null || category.trim().isEmpty() ||
-	            costStr == null || costStr.trim().isEmpty() ||
-	            quantityStr == null || quantityStr.trim().isEmpty() ||
-	            detail == null || detail.trim().isEmpty()) {
-
-	            request.setAttribute("errorMessage", "Vui lòng điền đầy đủ thông tin.");
-	            request.getRequestDispatcher("/addProduct.jsp").forward(request, response);
-	            return;
-	        }
-
-	        try {
-	            double cost = Double.parseDouble(costStr);
-	            int quantity = Integer.parseInt(quantityStr);
-
-	            if (cost <= 0 || quantity <= 0) {
-	                request.setAttribute("errorMessage", "Giá và số lượng phải lớn hơn 0.");
-	                request.getRequestDispatcher("/addProduct.jsp").forward(request, response);
-	                return;
-	            }
-
-	            // Lưu danh sách hình ảnh
-	            ArrayList<String> imageNames = new ArrayList<>();
-	            for (Part imagePart : imageParts) {
-	                // Kiểm tra nếu là phần file hình ảnh
-	                if (imagePart.getContentType() != null && imagePart.getContentType().startsWith("image/")) {
-	                    String fileName = Paths.get(imagePart.getSubmittedFileName()).getFileName().toString();
-	                    
-	                    // Lưu file vào thư mục images
-	                    String uploadPath = getServletContext().getRealPath("/images");
-	                    File uploadDir = new File(uploadPath);
-	                    if (!uploadDir.exists()) {
-	                        uploadDir.mkdir();
-	                    }
-	                    String storeName=changeName(fileName);
-	                    String filePath = uploadPath + File.separator + storeName;
-	                    imagePart.write(filePath);
-
-	                    imageNames.add(storeName); // Thêm tên file vào danh sách
-	                }
-	            }
-
-	            // Kết nối tới ProductDao để lưu sản phẩm
-	            ServletContext application = getServletContext();
-	            ProductDao dao = (ProductDao) application.getAttribute("products");
-
-	            dao.update(new Product(Integer.parseInt(id), name, imageNames, detail, cost, category, quantity));
-
-	            // Chuyển hướng sau khi thêm sản phẩm thành công
-	            response.sendRedirect("adminAdd.jsp");
-
-	        } catch (NumberFormatException e) {
-	            request.setAttribute("errorMessage", "Giá hoặc số lượng không hợp lệ.");
-	            request.getRequestDispatcher("/AdminEdit.jsp").forward(request, response);
-	        }
-		
-		request.getRequestDispatcher("adminListProduct.jsp").forward(request, response);
+		doGet(request, response);
 	}
-	private String changeName(String fileName) {
-        // Tạo chuỗi ngẫu nhiên bằng UUID
-        String randomString = UUID.randomUUID().toString(); 
-        // Kết hợp chuỗi ngẫu nhiên với phần mở rộng của file
-        return randomString + fileName;
-    }
+
 }

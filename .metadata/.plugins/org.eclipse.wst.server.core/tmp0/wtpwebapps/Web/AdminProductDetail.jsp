@@ -119,7 +119,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a  href="${pageContext.request.contextPath}/AdminDelete?productid=${product.id}"
 							class="btn btn-primary btn-normal btn-inline btn_form button item_add item_1"
 							target="_self">Delete</a>
-							<a href="AdminEdit.jsp"
+							<a href="${pageContext.request.contextPath}/AdminEdit?productid=${product.id}&action=edit"
 							class="btn btn-primary btn-normal btn-inline btn_form button item_add item_1"
 							target="_self">Edit</a>
 					</div>
