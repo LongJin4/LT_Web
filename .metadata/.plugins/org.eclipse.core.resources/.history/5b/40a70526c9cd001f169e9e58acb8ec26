@@ -114,7 +114,7 @@ public class AdminEdit extends HttpServlet {
 	            ServletContext application = getServletContext();
 	            ProductDao dao = (ProductDao) application.getAttribute("products");
 
-	            dao.update(new Product(Integer.parseInt(id), name, imageNames, detail, cost, category, quantity));
+	            dao.insert(new Product(name, imageNames, detail, cost, category, quantity));
 
 	            // Chuyển hướng sau khi thêm sản phẩm thành công
 	            response.sendRedirect("adminAdd.jsp");

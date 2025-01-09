@@ -47,7 +47,7 @@ button:hover {
 	<jsp:include page="AdminHeader.jsp"></jsp:include>
 
 	<h1>Sửa Sản Phẩm</h1>
-
+	<input type="hidden" name="productId" value="${productId}">
 	<!-- Hiển thị thông báo lỗi (nếu có) -->
 	<c:if test="${not empty errorMessage}">
 		<div class="error">${errorMessage}</div>
@@ -55,8 +55,6 @@ button:hover {
 
 	<form action="AdminEdit" method="post"
 		enctype="multipart/form-data">
-			<input type="hidden" name="productId" value="${productId}">
-		
 		<!-- Tên sản phẩm -->
 		<label for="name">Tên sản phẩm:</label> <input type="text" id="name"
 			name="name" placeholder="Nhập tên sản phẩm" required>

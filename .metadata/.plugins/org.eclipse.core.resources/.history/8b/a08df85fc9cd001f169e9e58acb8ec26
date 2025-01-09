@@ -19,7 +19,7 @@ public class ProductDao implements IProductDao {
 		Connection connect;
 		List<Product> res = new ArrayList<Product>();
 		String sql = "SELECT * FROM product";
-		String sqlimgage = "SELECT * FROM product_image  where id = ?";
+		String sqlimgage = "SELECT * FROM product_image  where id_product = ?";
 		try {
 			connect = DatabaseConnection.getConnection();
 			Statement statment = connect.createStatement();
@@ -99,7 +99,7 @@ public class ProductDao implements IProductDao {
 	}
 
 	private void insertImage(Product product) {
-		String sql = "INSERT INTO ProductImages(product_id, id_image, image) VALUES(?, ?, ?)";
+		String sql = "INSERT INTO product_image(id_product, image) VALUES( ?, ?)";
 		Connection connect = null;
 
 		try {
@@ -110,11 +110,9 @@ public class ProductDao implements IProductDao {
 			// Duyệt qua danh sách hình ảnh của sản phẩm và chèn từng ảnh vào bảng
 			// ProductImages
 			for (int i = 0; i < product.getListimg().size(); i++) {
-				String imageId = "IMG" + String.format("%03d", i + 1); // Tạo id_image theo định dạng IMG001, IMG002,
-																		// ...
+				// ...
 				prs.setInt(1, product.getId()); // product_id là ID của sản phẩm
-				prs.setString(2, imageId); // id_image
-				prs.setString(3, product.getListimg().get(i)); // image là tên ảnh hoặc đường dẫn ảnh
+				prs.setString(2, product.getListimg().get(i)); // image là tên ảnh hoặc đường dẫn ảnh
 
 				// Thực thi câu lệnh chèn ảnh
 				prs.executeUpdate();
@@ -133,7 +131,53 @@ public class ProductDao implements IProductDao {
 	@Override
 	public int delete(Product product) {
 		// TODO Auto-generated method stub
-		return 0;
+		String sql = "DELETE FROM product WHERE id=? ";
+		Connection connection;
+		int res = 0;
+		try {
+			connection = DatabaseConnection.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, product.id);
+			res = preparedStatement.executeUpdate();
+			degreecategory(product);
+			deleteImage(product);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	private void deleteImage(Product product) {
+		String sql = "DELETE FROM product_image WHERE id_product=?";
+		Connection connect = null;
+
+		try {
+			connect = DatabaseConnection.getConnection();
+			PreparedStatement prs = connect.prepareStatement(sql);
+			prs.setInt(1, product.getId());
+			prs.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private int degreecategory(Product product) {
+		String sql = "update categories set soluong= soluong-1 where category=?";
+		Connection connection;
+		int res = 0;
+		try {
+			connection = DatabaseConnection.getConnection();
+			PreparedStatement prs = connection.prepareStatement(sql);
+			prs.setString(1, product.getCategory());
+			res = prs.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return res;
+
 	}
 
 	@Override
@@ -142,7 +186,7 @@ public class ProductDao implements IProductDao {
 		Connection connect;
 		int pid = Integer.parseInt(id);
 		String sql = "SELECT *" + "FROM product where id= ?";
-		String imageSql = "SELECT * FROM product_image where product_id = ?";
+		String imageSql = "SELECT * FROM product_image where id_product = ?";
 		Product res = null;
 		try {
 			connect = DatabaseConnection.getConnection();
@@ -175,7 +219,7 @@ public class ProductDao implements IProductDao {
 			Statement st = connect.createStatement();
 			ResultSet resultset = st.executeQuery(sql);
 			while (resultset.next()) {
-				res.add(new Category(resultset.getString("category"),resultset.getInt("soluong")));
+				res.add(new Category(resultset.getString("category"), resultset.getInt("soluong")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -57,7 +57,6 @@ public class AdminEdit extends HttpServlet {
 		  request.setCharacterEncoding("UTF-8");
 
 	        // Lấy thông tin từ form
-		  String id= request.getParameter("productId");
 	        String name = request.getParameter("name");
 	        String category = request.getParameter("category");
 	        String costStr = request.getParameter("cost");
@@ -114,7 +113,7 @@ public class AdminEdit extends HttpServlet {
 	            ServletContext application = getServletContext();
 	            ProductDao dao = (ProductDao) application.getAttribute("products");
 
-	            dao.update(new Product(Integer.parseInt(id), name, imageNames, detail, cost, category, quantity));
+	            dao.insert(new Product(name, imageNames, detail, cost, category, quantity));
 
 	            // Chuyển hướng sau khi thêm sản phẩm thành công
 	            response.sendRedirect("adminAdd.jsp");

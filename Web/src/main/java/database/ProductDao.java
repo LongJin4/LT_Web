@@ -124,7 +124,7 @@ public class ProductDao implements IProductDao {
 
 	@Override
 	public int update(Product product) {
-		// TODO Auto-generated method stub
+		String sql="UPDATE product SET name WHERE condition;";
 		return 0;
 	}
 

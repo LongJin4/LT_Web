@@ -21,18 +21,6 @@ public class Product {
 		listimg = new ArrayList();
 	}
 
-	public Product(int id, String name, List<String> listimg, String detail, double cost, String category,
-			int quantity) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.listimg = listimg;
-		this.detail = detail;
-		this.cost = cost;
-		this.category = category;
-		this.quantity = quantity;
-	}
-
 	public String getCategory() {
 		return category;
 	}

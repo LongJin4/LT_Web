@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.UUID;
 
 import bean.Product;
 import database.ProductDao;
@@ -57,7 +56,6 @@ public class AdminEdit extends HttpServlet {
 		  request.setCharacterEncoding("UTF-8");
 
 	        // Lấy thông tin từ form
-		  String id= request.getParameter("productId");
 	        String name = request.getParameter("name");
 	        String category = request.getParameter("category");
 	        String costStr = request.getParameter("cost");
@@ -114,22 +112,17 @@ public class AdminEdit extends HttpServlet {
 	            ServletContext application = getServletContext();
 	            ProductDao dao = (ProductDao) application.getAttribute("products");
 
-	            dao.update(new Product(Integer.parseInt(id), name, imageNames, detail, cost, category, quantity));
+	            dao.insert(new Product(name, imageNames, detail, cost, category, quantity));
 
 	            // Chuyển hướng sau khi thêm sản phẩm thành công
 	            response.sendRedirect("adminAdd.jsp");
 
 	        } catch (NumberFormatException e) {
 	            request.setAttribute("errorMessage", "Giá hoặc số lượng không hợp lệ.");
-	            request.getRequestDispatcher("/AdminEdit.jsp").forward(request, response);
+	            request.getRequestDispatcher("/addProduct.jsp").forward(request, response);
 	        }
 		
 		request.getRequestDispatcher("adminListProduct.jsp").forward(request, response);
 	}
-	private String changeName(String fileName) {
-        // Tạo chuỗi ngẫu nhiên bằng UUID
-        String randomString = UUID.randomUUID().toString(); 
-        // Kết hợp chuỗi ngẫu nhiên với phần mở rộng của file
-        return randomString + fileName;
-    }
+
 }
