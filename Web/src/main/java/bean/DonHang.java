@@ -57,5 +57,11 @@ public class DonHang {
 	public void setPheduyet(boolean pheduyet) {
 		this.pheduyet = pheduyet;
 	}
-
+	public double price() {
+		double res=0;
+		for (Product product : listproduct) {
+			res+= product.cost;
+		}
+		return res;
+	}
 }

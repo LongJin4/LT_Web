@@ -12,11 +12,8 @@
 	content="Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
-	
-	
+
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
-
 </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -52,7 +49,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h3>Categories</h3>
 				<ul class="product-categories color">
 					<c:forEach var="category" items="${products.getCategories()}">
-						<li class="cat-item cat-item-42"><a href="#">${category.category}</a>
+						<li class="cat-item cat-item-42"><a
+							href="FilterServlet?category=${category.category}&page=admin">${category.category}</a>
 							<span class="count">${category.num}</span></li>
 					</c:forEach>
 
@@ -66,22 +64,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<span>&gt;</span></li>
 						<li class="home">&nbsp; Men / Women&nbsp;</li>
 					</ul>
-					<ul class="previous">
-						<li><a href="index.html">Back to Previous Page</a></li>
-					</ul>
 					<div class="clearfix"></div>
 				</div>
 				<div class="mens-toolbar">
-					<div class="sort">
-						<div class="sort-by">
-							<label>Sort By</label> <select>
-								<option value="">Position</option>
-								<option value="">Name</option>
-								<option value="">Price</option>
-							</select> <a href=""><img src="images/arrow2.gif" alt=""
-								class="v-middle"></a>
-						</div>
-					</div>
+
 					<ul class="women_pagenation dc_paginationA dc_paginationA06">
 						<li><a href="#" class="previous">Page : </a></li>
 						<li class="active"><a href="#">1</a></li>
@@ -96,42 +82,68 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							href="#" class="cbp-vm-icon cbp-vm-list"
 							data-view="cbp-vm-view-list" title="list">List View</a>
 					</div>
-					<div class="pages">
-						<div class="limiter visible-desktop">
-							<label>Show</label> <select>
-								<option value="" selected="selected">9</option>
-								<option value="">15</option>
-								<option value="">30</option>
-							</select> per page
-						</div>
-					</div>
 					<div class="clearfix"></div>
 					<!-- content load từ database  -->
 					<ul>
-						<c:forEach var="product" items="${products.all()}">
-							<li class="simpleCart_shelfItem"><a class="cbp-vm-image"
-								href="${pageContext.request.contextPath}/AdminEdit?productid=${product.id}&action=detail">
-									<div class="view view-first">
-										<div class="inner_content clearfix">
-											<div class="product_image">
-												<div class="mask1">
-													<img src="images/${product.getFirstImage()}" alt="image"
-														class="img-responsive zoom-img">
-												</div>
-												<div class="mask">
-													<div class="info">Quick View</div>
-												</div>
-												<div class="product_container">
-													<h4>${product.name}</h4>
-													<p>Dresses</p>
-													<div class="price mount item_price">${product.cost}</div>
-													<a class="button item_add cbp-vm-icon cbp-vm-add" href="${pageContext.request.contextPath}/AdminDelete?productid=${product.id}">Delete</a>
+						<c:if test="${empty filter}">
+							<c:forEach var="product" items="${products.all()}">
+								<li class="simpleCart_shelfItem"><a class="cbp-vm-image"
+									href="${pageContext.request.contextPath}/ProductServlet?productid=${product.id}">
+										<div class="view view-first">
+											<div class="inner_content clearfix">
+												<div class="product_image">
+													<div class="mask1">
+														<img src="images/${product.getFirstImage()}" alt="image"
+															class="img-responsive zoom-img">
+													</div>
+													<div class="mask">
+														<div class="info">Quick View</div>
+													</div>
+													<div class="product_container">
+														<h4>${product.name}</h4>
+														<p>Dresses</p>
+														<div class="price mount item_price">${product.cost}</div>
+														<a class="button item_add cbp-vm-icon cbp-vm-add"
+															href="${pageContext.request.contextPath}/AddToCart?productid=${product.id}">Add
+															to cart</a>
+													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-							</a></li>
-						</c:forEach>
+								</a></li>
+							</c:forEach>
+
+						</c:if>
+
+						<c:if test="${not empty filter}">
+							<c:forEach var="product" items="${filter}">
+								<li class="simpleCart_shelfItem"><a class="cbp-vm-image"
+									href="${pageContext.request.contextPath}/ProductServlet?productid=${product.id}">
+										<div class="view view-first">
+											<div class="inner_content clearfix">
+												<div class="product_image">
+													<div class="mask1">
+														<img src="images/${product.getFirstImage()}" alt="image"
+															class="img-responsive zoom-img">
+													</div>
+													<div class="mask">
+														<div class="info">Quick View</div>
+													</div>
+													<div class="product_container">
+														<h4>${product.name}</h4>
+														<p>Dresses</p>
+														<div class="price mount item_price">${product.cost}</div>
+														<a class="button item_add cbp-vm-icon cbp-vm-add"
+															href="${pageContext.request.contextPath}/AddToCart?productid=${product.id}">Add
+															to cart</a>
+													</div>
+												</div>
+											</div>
+										</div>
+								</a></li>
+							</c:forEach>
+
+						</c:if>
 
 					</ul>
 				</div>

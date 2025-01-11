@@ -12,11 +12,7 @@
 	content="Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
-	
-	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
-
 </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -96,12 +92,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<!-- start search-->
 					<div class="search-box">
 						<div id="sb-search" class="sb-search">
-							<form>
+							<form action="SearchServlet?index=1" method="post">
+								<!-- Input field for the search term -->
 								<input class="sb-search-input"
 									placeholder="Enter your search term..." type="search"
-									name="search" id="search"> <input
-									class="sb-search-submit" type="submit" value=""> <span
-									class="sb-icon-search"> </span>
+									name="query" id="search" required>
+
+								<!-- Hidden submit button to allow form submission -->
+								<input class="sb-search-submit" type="submit" value="">
+
+								<!-- Search Icon -->
+								<span class="sb-icon-search"> </span>
 							</form>
 						</div>
 					</div>

@@ -34,7 +34,7 @@ public class SearchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String destination = "/searchResultPage.jsp";
+		String destination = "/men.jsp";
 		// Lấy input từ search bar
 		String txtSearch = request.getParameter("query");
 
@@ -53,14 +53,14 @@ public class SearchServlet extends HttpServlet {
 			endPage++;
 		}
 		
-		List<Product> searchResults = productDao.searchResult(txtSearch, index, 0);
+		List<Product> searchResults = productDao.searchResult(txtSearch);
 		
 		request.setAttribute("endPage", endPage);
-		request.setAttribute("searchResults", searchResults);
+		request.setAttribute("filter", searchResults);
 		request.setAttribute("searchQuery", txtSearch);
 
 		// Forward jsp
-		response.sendRedirect(request.getContextPath() + destination);
+		request.getRequestDispatcher(destination).forward(request, response);
 	}
 
 	/**

@@ -83,6 +83,7 @@ tr:hover {
 			<tr>
 				<th>Mã Đơn Hàng</th>
 				<th>Ngày Lập Hóa Đơn</th>
+				<th>Giá Tiền</th>
 				<th>Trạng Thái Phê Duyệt</th>
 				<th>Hành Động</th>
 			</tr>
@@ -93,6 +94,7 @@ tr:hover {
 				<tr>
 					<td>${order.id}</td>
 					<td>${order.ngaylaphoadon}</td>
+					<td>${order.price() } $</td>
 					<td><c:choose>
 							<c:when test="${order.pheduyet}">
 								<span style="color: green; font-weight: bold;">Đã Phê

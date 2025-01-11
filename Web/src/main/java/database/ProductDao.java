@@ -265,36 +265,62 @@ public class ProductDao implements IProductDao {
 		return count;
 	}
 
-	public List<Product> searchResult(String txtSearch, int index, int size) {
+	public List<Product> searchResult(String txtSearch) {
 		Connection connect;
 		List<Product> res = new ArrayList<>();
-		String sql = "with x as (SELECT ROW_NUMBER () over (oder by id) as r\n" + ", * FROM product p "
-				+ "JOIN product_detail pd ON p.id = pd.product_id " + "WHERE p.name LIKE ? \n"
-				+ "SELECT * from x where r between ?*size-(size-1) and ?*size";
-		String sqlImage = "SELECT * FROM product_image WHERE product_id = ?";
+		String sql = "select * from product where name like ?";
+		String sqlImage = "SELECT * FROM product_image WHERE id_product = ?";
 		try {
 			connect = DatabaseConnection.getConnection();
 			PreparedStatement ps = connect.prepareStatement(sql);
 			ps.setString(1, "%" + txtSearch + "%");
-			ps.setInt(2, index);
-			ps.setInt(3, index);
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Product product = new Product(rs.getInt("id"), rs.getString("name"), rs.getString("detail"),
 						rs.getDouble("cost"));
 
-				// images
-				PreparedStatement preImage = connect.prepareStatement(sqlImage);
-				preImage.setString(1, rs.getString("id"));
-				ResultSet rsImage = preImage.executeQuery();
-				while (rsImage.next()) {
-					product.getListimg().add(rsImage.getString("image"));
+//				thêm danh sách ảnh
+				PreparedStatement pre = connect.prepareStatement(sqlImage);
+				pre.setInt(1, rs.getInt("id"));
+				ResultSet rsimg = pre.executeQuery();
+				while (rsimg.next()) {
+					product.getListimg().add(rsimg.getString("image"));
 				}
-
 				res.add(product);
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+	public List<Product> filter(String categoryFilter) {
+		// TODO Auto-generated method stub
+		List<Product>res= new ArrayList<Product>();
+		String sql="select * from product where category= ?";
+		String imageSql = "SELECT * FROM product_image where id_product = ?";
+		Connection conn;
+		try {
+			conn=DatabaseConnection.getConnection();
+			PreparedStatement prs= conn.prepareStatement(sql);
+			prs.setString(1, categoryFilter);
+			ResultSet rs= prs.executeQuery();
+			while (rs.next()) {
+				Product product = new Product(rs.getInt("id"), rs.getString("name"), rs.getString("detail"),
+						rs.getDouble("cost"));
+
+//				thêm danh sách ảnh
+				PreparedStatement pre = conn.prepareStatement(imageSql);
+				pre.setInt(1, rs.getInt("id"));
+				ResultSet rsimg = pre.executeQuery();
+				while (rsimg.next()) {
+					product.getListimg().add(rsimg.getString("image"));
+				}
+				res.add(product);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return res;

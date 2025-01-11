@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,11 @@
 	content="Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
 </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -38,26 +42,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/simpleCart.min.js">
 	
 </script>
+</script>
+
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="account-in">
 		<div class="container">
 			<form action="${pageContext.request.contextPath}/RegisterServlet"
-				method="post">
+				method="post" >
+
 				<div class="register-top-grid">
 					<h2>PERSONAL INFORMATION</h2>
 					<div>
 						<span>First Name<label>*</label></span> <input type="text"
 							name="firstname">
+							<p style="color: #dc3545;">${nameError}</p>  
 					</div>
 					<div>
 						<span>Last Name<label>*</label></span> <input type="text"
 							name="lastname">
+							<p style="color: #dc3545;">${lastnameError}</p>  
 					</div>
 					<div>
 						<span>Email Address<label>*</label></span> <input type="text"
 							name="email">
+							<p style="color: #dc3545;">${emailError}</p>  
 					</div>
 					<div class="clearfix"></div>
 					<a class="news-letter" href="#"> <label class="checkbox"><input
@@ -70,10 +80,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div>
 						<span>Password<label>*</label></span> <input type="password"
 							name="password">
+							<p style="color: #dc3545;">${passError}</p>  
 					</div>
 					<div>
 						<span>Confirm Password<label>*</label></span> <input
-							type="password">
+							type="password" name="confirmPassword">
+							<p style="color: #dc3545;">${passError}</p>
 					</div>
 					<div class="clearfix"></div>
 				</div>

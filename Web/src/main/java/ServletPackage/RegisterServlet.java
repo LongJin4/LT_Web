@@ -36,17 +36,47 @@ public class RegisterServlet extends HttpServlet {
 		String destination = "/register.jsp";
 		UserDao users = DAOFactory.getInstance().getUserDao();
 //		Lay thong tin tu request
+		boolean isvalid = true;
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String role="user";
-		int insert = users.insert(new User(firstname, lastname, email, password,role));
-		System.out.println(insert);
-		if (insert > 1) {
-			destination = "/View_JSP/login.jsp";
+		String confirmPass= request.getParameter("confirmPassword");
+		String role = "user";
+
+		if (firstname == null || firstname.equals("")) {
+			request.setAttribute("nameError", "first name khong duoc de trong");
+			isvalid = false;
 		}
-		response.sendRedirect(request.getContextPath() + destination);
+		if (lastname == null || lastname.equals("")) {
+			request.setAttribute("lastnameError", "last name khong duoc de trong");
+			isvalid = false;
+		}
+		if (email == null || email.equals("")) {
+			request.setAttribute("emailError", "email khong duoc de trong");
+			isvalid = false;
+		}
+		
+		if (password == null || password.equals("")) {
+			request.setAttribute("passError", "pass khong duoc de trong");
+			isvalid = false;
+		}
+		if (confirmPass == null || confirmPass.equals("")) {
+			request.setAttribute("passError", "pass khong duoc de trong");
+			isvalid = false;
+		}
+		if (!confirmPass.equals(password)) {
+			request.setAttribute("passError", "mat khau khong khop");
+			isvalid = false;
+		}
+		int insert = 0;
+		if (isvalid) {
+			insert = users.insert(new User(firstname, lastname, email, password, role));
+		}
+		if (insert >= 1) {
+			destination = "login.jsp";
+		}
+		request.getRequestDispatcher(destination).forward(request, response);
 	}
 
 	/**
