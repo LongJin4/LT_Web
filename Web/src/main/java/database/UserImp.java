@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import com.mysql.cj.protocol.Resultset;
 
 import bean.User;
@@ -82,7 +84,7 @@ public class UserImp implements UserDao {
 		Connection conn = null;
 		try {
 			conn = DatabaseConnection.getConnection();
-			String sql = "SELECT * FROM user WHERE email= ? AND pass= ? and role=?;";
+			String sql = "SELECT * FROM user WHERE email= ? AND pass= ? and role= ? ";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,admin);
 			pstmt.setString(2,password);
@@ -97,36 +99,28 @@ public class UserImp implements UserDao {
 		return res;
 	}
 	@Override
-	public User findById(User user) {
+	public User checkPass(String email, String password) {
 		Connection conn = null;
 		User userTemp = null;
+		 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		try {
 			conn = DatabaseConnection.getConnection();
-			String sql = "SELECT * FROM user WHERE email= ? AND pass= ?;";
+			String sql = "SELECT * FROM user WHERE email= ? ;";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, user.getEmail());
-			pstmt.setString(2, user.getPassword());
-			ResultSet result = pstmt.executeQuery();
-
-			if (result.next()) {
-				String email = result.getString("email");
-				String pass = result.getString("pass");
-				String firstName = result.getString("firstname");
-				String lastName = result.getString("lastname");
-				String role= result.getString("role");
-				userTemp = new User(firstName, lastName, email, pass,role);
+			pstmt.setString(1, email);
+			ResultSet rs= pstmt.executeQuery();
+			while(rs.next()) {
+				if(passwordEncoder.matches(password, rs.getString("pass"))) {
+					String firstName = rs.getString("firstname");
+					String lastName = rs.getString("lastname");
+					String role= rs.getString("role");
+					userTemp = new User(firstName, lastName, email, rs.getString("pass"),role);
+					break;
+				}
 			}
-			pstmt.close();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
-		} finally {
-			try {
-				if (conn != null)
-					conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 		return userTemp;
 	}

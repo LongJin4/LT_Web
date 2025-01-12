@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import bean.User;
 import database.DAOFactory;
 import database.UserDao;
@@ -71,7 +73,9 @@ public class RegisterServlet extends HttpServlet {
 		}
 		int insert = 0;
 		if (isvalid) {
-			insert = users.insert(new User(firstname, lastname, email, password, role));
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			 String hashedPassword = passwordEncoder.encode(password);
+			insert = users.insert(new User(firstname, lastname, email, hashedPassword, role));
 		}
 		if (insert >= 1) {
 			destination = "login.jsp";

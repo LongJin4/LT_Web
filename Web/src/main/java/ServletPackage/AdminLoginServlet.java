@@ -34,8 +34,10 @@ public class AdminLoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 	String email= request.getParameter("email");
 	String pass= request.getParameter("password");
+	System.out.println(email);
 	String des= "AdminLogin.jsp";
 	UserDao dao= DAOFactory.getInstance().getUserDao();
+	System.out.println(dao.checkAdmin(email, pass));
 	if(dao.checkAdmin(email, pass)) {
 		des="adminListProduct.jsp";
 		ServletContext application = getServletContext();

@@ -10,6 +10,8 @@ import jakarta.websocket.Session;
 
 import java.io.IOException;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import bean.User;
 import database.DAOFactory;
 import database.UserDao;
@@ -42,20 +44,20 @@ public class LoginServlet extends HttpServlet {
 //		Lay thong tin tu request
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String role= request.getParameter("role");
+		
+		String role = request.getParameter("role");
 //		them user vao session
-		if (users.findById(new User(email, password,role)) != null) {
-			User user = users.findById(new User(email, password,role));
+		if (users.checkPass(email,password)!=null) {
+			User user =users.checkPass(email,password);
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 //			chuyen des sang index
-			 destination = "/login.jsp";
+			destination = "/login.jsp";
 			System.out.println("success");
 		}
 //		dieu huong sang index
 		response.sendRedirect(request.getContextPath() + destination);
 	}
-
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

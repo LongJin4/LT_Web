@@ -12,7 +12,7 @@ public interface UserDao {
 	public int update(User user);
 
 	public int delete(User user);
-
-	public User findById(User user);
 	public boolean checkAdmin(String admin,String password);
+
+	public User checkPass(String email, String password);
 }

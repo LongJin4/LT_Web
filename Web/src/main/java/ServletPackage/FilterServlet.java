@@ -36,10 +36,18 @@ public class FilterServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String categoryFilter = request.getParameter("category");
 		String page = request.getParameter("page");
+		String admin= request.getParameter("admin");
 		String destination = "filteredProducts.jsp";
 		ServletContext application = getServletContext();
 		ProductDao dao = (ProductDao) application.getAttribute("products");
 		List<Product> filterProduct = dao.filter(categoryFilter);
+		if(page!= null) {
+			int pagenum= Integer.parseInt(page)-1;
+			filterProduct= dao.all().subList(pagenum*6, Math.min(pagenum*6+6, dao.all().size()));
+		}
+		if(admin!=null) {
+			destination = "adminListProduct.jsp";
+		}
 		request.setAttribute("filter", filterProduct);
 		request.getRequestDispatcher(destination).forward(request, response);
 	}

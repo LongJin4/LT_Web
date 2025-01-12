@@ -12,8 +12,40 @@
 	content="Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
+	
 
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+</script>
+
+<script>
+	$(document).ready(function() {
+		$(".megamenu").megamenu();
+
+		// Khi người dùng chọn thể loại từ danh sách
+		$('a[href^="FilterServlet"]').click(function(e) {
+			e.preventDefault(); // Ngừng hành động mặc định (chuyển hướng)
+			var category = $(this).text(); // Lấy thể loại từ href
+			var page = $(this).attr('href').split('page=')[1]; // Lấy trang
+
+			// Gửi yêu cầu AJAX đến FilterServlet
+			$.ajax({
+				url : 'FilterServlet',
+				type : 'GET',
+				data : {
+					category : category,
+					page : page
+				}, // Gửi dữ liệu thể loại và trang
+				success : function(response) {
+					// Thay thế nội dung trong phần sản phẩm với dữ liệu mới
+					$('#content').html(response);
+				},
+				error : function(xhr, status, error) {
+					console.error('Có lỗi khi gửi yêu cầu: ', error);
+				}
+			});
+		});
+	});
 </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -31,11 +63,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="css/megamenu.css" rel="stylesheet" type="text/css"
 	media="all" />
 <script type="text/javascript" src="js/megamenu.js"></script>
-<script>
-	$(document).ready(function() {
-		$(".megamenu").megamenu();
-	});
-</script>
 <script src="js/jquery.easydropdown.js"></script>
 <script src="js/simpleCart.min.js">
 	
@@ -50,7 +77,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<ul class="product-categories color">
 					<c:forEach var="category" items="${products.getCategories()}">
 						<li class="cat-item cat-item-42"><a
-							href="FilterServlet?category=${category.category}&page=admin">${category.category}</a>
+							href="FilterServlet?category=${category.category}&admin=admin">${category.category}</a>
 							<span class="count">${category.num}</span></li>
 					</c:forEach>
 
@@ -70,8 +97,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 					<ul class="women_pagenation dc_paginationA dc_paginationA06">
 						<li><a href="#" class="previous">Page : </a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
+						<c:forEach var="i" begin="1"
+							end="${products.all().size()/6 + (products.all().size() % 6 == 0 ? 0 : 1)}">
+							<li><a href="FilterServlet?page=${i}&admin=admin" >${i}</a></li>
+						</c:forEach>
 					</ul>
 					<div class="clearfix"></div>
 				</div>
@@ -84,11 +113,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="clearfix"></div>
 					<!-- content load từ database  -->
-					<ul>
+					<ul id="content">
 						<c:if test="${empty filter}">
 							<c:forEach var="product" items="${products.all()}">
 								<li class="simpleCart_shelfItem"><a class="cbp-vm-image"
-									href="${pageContext.request.contextPath}/ProductServlet?productid=${product.id}">
+									href="${pageContext.request.contextPath}/AdminEdit?productid=${product.id}&action=detail">
 										<div class="view view-first">
 											<div class="inner_content clearfix">
 												<div class="product_image">
@@ -118,7 +147,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<c:if test="${not empty filter}">
 							<c:forEach var="product" items="${filter}">
 								<li class="simpleCart_shelfItem"><a class="cbp-vm-image"
-									href="${pageContext.request.contextPath}/ProductServlet?productid=${product.id}">
+									href="${pageContext.request.contextPath}/AdminEdit?productid=${product.id}&action=detail">
 										<div class="view view-first">
 											<div class="inner_content clearfix">
 												<div class="product_image">
