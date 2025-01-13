@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+
 import bean.Product;
 import bean.ShoppingCart;
 import database.DAOFactory;

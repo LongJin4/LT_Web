@@ -1,0 +1,86 @@
+package ServletPackage;
+
+
+import jakarta.mail.Authenticator;
+import jakarta.mail.PasswordAuthentication;
+import jakarta.mail.Session;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Properties;
+
+
+/**
+ * Servlet implementation class MailServlet
+ */
+@WebServlet("/MailServlet")
+public class MailServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public MailServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Lấy email từ form
+        String input = request.getParameter("input");
+
+        // Cấu hình thuộc tính email
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com"); // SMTP server của Gmail
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+
+        // Xác thực email và mật khẩu gửi
+        final String username = "22130057@st.hcmuaf.edu.vn"; // Thay bằng email gửi
+        final String password = "lambaoduy"; // Thay bằng mật khẩu email
+
+        // Tạo session
+        Session session = Session.getInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+
+        try {
+            // Tạo email
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(username)); // Email người gửi
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress("lambaoduy2004@gmail.com")); // Email người nhận
+            message.setSubject("Welcome to our service!"); // Tiêu đề email
+            message.setText(input); // Nội dung email
+
+            // Gửi email
+            Transport.send(message);
+
+            // Phản hồi khi gửi thành công
+            response.getWriter().println("Email sent successfully to " + input);
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+            response.getWriter().println("Failed to send email.");
+        }
+    }
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

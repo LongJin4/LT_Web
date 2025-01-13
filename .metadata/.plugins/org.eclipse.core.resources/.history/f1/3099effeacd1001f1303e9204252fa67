@@ -1,0 +1,67 @@
+package ServletPackage;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Properties;
+
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.SimpleEmail;
+
+
+/**
+ * Servlet implementation class MailServlet
+ */
+@WebServlet("/MailServlet")
+public class MailServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public MailServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Lấy email từ form
+        String input = request.getParameter("input");
+
+        // Cấu hình email
+        SimpleEmail email = new SimpleEmail();
+        email.setHostName("smtp.gmail.com");
+        email.setSmtpPort(587);
+        email.setAuthentication("2213057@st.hcmuaf.edu.vn", "lambaoduy");
+        email.setStartTLSEnabled(true);
+        
+        // Đặt thông tin email
+        email.setFrom("2213057@st.hcmuaf.edu.vn");
+        email.addTo("lambaoduy2004@gmail.com");
+        email.setSubject("Thong Bao Mua Hang");
+        try {
+			email.setMsg(input);
+		} catch (EmailException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        // Gửi email
+        email.send();
+    }
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

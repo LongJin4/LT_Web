@@ -1,0 +1,68 @@
+package ServletPackage;
+
+
+import jakarta.mail.Authenticator;
+import jakarta.mail.Message;
+import jakarta.mail.MessagingException;
+import jakarta.mail.PasswordAuthentication;
+import jakarta.mail.Session;
+import jakarta.mail.Transport;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.Properties;
+
+
+/**
+ * Servlet implementation class MailServlet
+ */
+@WebServlet("/MailServlet")
+public class MailServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public MailServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Lấy email từ form
+        String input = request.getParameter("input");
+
+        // Cấu hình email
+        SimpleEmail email = new SimpleEmail();
+        email.setHostName("smtp.gmail.com");
+        email.setSmtpPort(587);
+        email.setAuthentication("your-email@gmail.com", "your-password");
+        email.setStartTLSEnabled(true);
+        
+        // Đặt thông tin email
+        email.setFrom("your-email@gmail.com", "Your Name");
+        email.addTo(toEmail);
+        email.setSubject(subject);
+        email.setMsg(messageBody);
+        
+        // Gửi email
+        email.send();
+    }
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

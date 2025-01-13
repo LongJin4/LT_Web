@@ -81,7 +81,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</p>
 						<div class="price_single">
 							<span class="reducedfrom"></span> <span
-								class="amount item_price actual">$ ${product.cost}</span>
+								class="amount item_price actual">${product.cost} ${currency}</span>
 						</div>
 						<h2 class="quick">Quick Overview:</h2>
 						<p class="quick_desc">${product.detail}</p>

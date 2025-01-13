@@ -59,7 +59,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="product_container">
 									<h4>${product.name}</h4>
-									<div class="price mount item_price">${product.cost}</div>
+									<div class="price mount item_price">${product.cost} ${currency}</div>
 									<a class="button item_add cbp-vm-icon cbp-vm-add"
 										href="${pageContext.request.contextPath}/AddToCart?productid=${product.id}">Add
 										to cart</a>

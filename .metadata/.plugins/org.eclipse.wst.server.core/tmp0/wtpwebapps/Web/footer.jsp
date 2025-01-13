@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-
-    pageEncoding="UTF-8"%>
-   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,9 +15,10 @@
 				<p>Lorem Ipsum is simply dummy text of the printing and
 					typesetting industry. Lorem Ipsum has been the industry's standard</p>
 				<form>
+					<!--<form action="MailServlet">  -->
 					<input type="text" value="" onfocus="this.value='';"
-						onblur="if (this.value == '') {this.value ='';}"> <input
-						type="submit" value="SUBSCRIBE">
+						onblur="if (this.value == '') {this.value ='';}" name="input">
+					<input type="submit" value="SUBSCRIBE">
 				</form>
 			</div>
 			<div class="cssmenu">

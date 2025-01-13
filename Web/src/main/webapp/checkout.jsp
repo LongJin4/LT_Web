@@ -76,7 +76,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li><p>Qty : 1</p></li>
 									</ul>
 									<div class="delivery">
-										<p>Service Charges :${product.cost}</p>
+										<p>Service Charges :${product.cost} ${currency}</p>
 										<span>Delivered in 2-3 business days</span>
 										<div class="clearfix"></div>
 									</div>
@@ -91,14 +91,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<a class="continue" href="men.jsp">Continue to basket</a>
 					<div class="price-details">
 						<h3>Price Details</h3>
-						<span>Total</span> <span class="total1">${cart.getPrice()}</span> <span>Discount</span>
+						<span>Total</span> <span class="total1">${cart.getPrice()} ${currency}</span> <span>Discount</span>
 						<div class="clearfix"></div>
 					</div>
 					<ul class="total_price">
 						<li class="last_price">
 							<h4>TOTAL</h4>
 						</li>
-						<li class="last_price"><span>${cart.getPrice()}</span></li>
+						<li class="last_price"><span>${cart.getPrice()} ${currency}</span></li>
 						<div class="clearfix"></div>
 					</ul>
 					<div class="clearfix"></div>

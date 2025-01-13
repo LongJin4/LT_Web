@@ -12,7 +12,11 @@
 	content="Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
 </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -59,13 +63,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="clearfix"></div>
 				</div>
 				<div class="header_top_right">
-					<div class="lang_list">
-						<select tabindex="4" class="dropdown">
-							<option value="" class="label" value="">$ Us</option>
-							<option value="1">Dollar</option>
-							<option value="2">Euro</option>
-						</select>
-					</div>
+					<form id="currencyForm" action="updateCurrency" method="post">
+						<div class="lang_list">
+							<select name="currency" tabindex="4" class="dropdown"
+								onchange="this.form.submit()">
+								<option value="" class="label">Currency</option>
+								<option value="USD">Dollar (USD)</option>
+								<option value="EUR">Euro (EUR)</option>
+								<option value="VND">Vietnam Dong (VND)</option>
+							</select>
+						</div>
+					</form>
 					<ul class="header_user_info">
 						<a class="login" href="login.jsp"> <i class="user"> </i>
 							<li class="user_desc"><c:choose>
@@ -117,7 +125,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="clearfix"></div>
 			</div>
-				<div class="header_bottom">
+			<div class="header_bottom">
 				<div class="logo">
 					<h1>
 						<a href="index.jsp"><span class="m_1">W</span>atches</a>

@@ -8,7 +8,6 @@
     <fullyQualifiedTypeName name="database.IProduct"/>
     <fullyQualifiedTypeName name="java.awt.image.ImageProducer"/>
     <fullyQualifiedTypeName name="database.IProductDao"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.sql.Statement"/>
     <fullyQualifiedTypeName name="jakarta.servlet.ServletContext"/>
     <fullyQualifiedTypeName name="bean.ShoppingCart"/>
@@ -30,4 +29,7 @@
     <fullyQualifiedTypeName name="database.DatabaseConnection"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="jakarta.mail.Authenticator"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
 </qualifiedTypeNameHistroy>
