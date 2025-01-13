@@ -57,7 +57,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 						</div>
 				</a></li>
-				<li class="col-sm-4"><a href="men.jsp" class="item-link"
+				<li class="col-sm-4"><a href="single.html" class="item-link"
 					title="">
 						<div class="bannerBox">
 							<img src="images/w3.jpg" class="item-img" title="" alt=""
@@ -71,7 +71,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 						</div>
 				</a></li>
-				<li class="col-sm-4"><a href="men.jsp" class="item-link"
+				<li class="col-sm-4"><a href="single.html" class="item-link"
 					title="">
 						<div class="bannerBox">
 							<img src="images/w2.jpg" class="item-img" title="" alt=""

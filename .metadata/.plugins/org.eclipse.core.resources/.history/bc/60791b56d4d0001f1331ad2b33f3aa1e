@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
 //			chuyen des sang index
-			destination = "/men.jsp";
+			destination = "/login.jsp";
 			System.out.println("success");
 		}
 //		dieu huong sang index

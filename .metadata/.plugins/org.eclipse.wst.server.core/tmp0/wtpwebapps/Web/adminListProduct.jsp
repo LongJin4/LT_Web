@@ -133,8 +133,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														<p>Dresses</p>
 														<div class="price mount item_price">${product.cost}</div>
 														<a class="button item_add cbp-vm-icon cbp-vm-add"
-															href="${pageContext.request.contextPath}/AddToCart?productid=${product.id}">Add
-															to cart</a>
+															href="${pageContext.request.contextPath}/AdminDelete?productid=${product.id}">Delete</a>
 													</div>
 												</div>
 											</div>
@@ -163,8 +162,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														<p>Dresses</p>
 														<div class="price mount item_price">${product.cost}</div>
 														<a class="button item_add cbp-vm-icon cbp-vm-add"
-															href="${pageContext.request.contextPath}/AddToCart?productid=${product.id}">Add
-															to cart</a>
+															href="${pageContext.request.contextPath}/AdminDelete?productid=${product.id}">Delete</a>
 													</div>
 												</div>
 											</div>

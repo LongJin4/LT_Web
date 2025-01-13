@@ -45,7 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="header_top">
 				<div class="header_top_left">
 					<div class="box_11">
-						<a href="checkout.jsp">
+						<a href="checkout.html">
 							<h4>
 								<p>Cart:$ ${cart.getPrice()} (${cart.getsize()} items)</p>
 								<img src="images/bag.png" alt="" />
